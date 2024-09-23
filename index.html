@@ -48,7 +48,7 @@
 
         <div id="n_media">
             <a href="https://linkedin.com"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://github.com/aman-sharma14"><i class="fa-brands fa-github"></i></a>
+            <a href="https://github.com"><i class="fa-brands fa-github"></i></a>
             <a href="emailto:sharma.aman.14@proton.me"><i class="fa-solid fa-envelope"></i></a>
             <a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
         </div>
@@ -68,7 +68,7 @@
             
             <div id="aboutme">
 
-                <h1>Aman Sharma</h1>
+                <h1>John Doe</h1>
                 <p>Contact: <br><span class="details">9876543210</span></p>
                 <p>Email: <br> <a class="details" href="emailto:sharma.aman.14@proton.me">sharma.aman.14@proton.me</a></p>
                 <p>Address: <br><span class="details"> A/210, Rose Villa, North St, NY</span></p>
@@ -80,7 +80,7 @@
 
        <div id="abt_media">
             <a href="https://linkedin.com"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://github.com/aman-sharma14"><i class="fa-brands fa-github"></i></a>
+            <a href="https://github.com"><i class="fa-brands fa-github"></i></a>
             <a href="mailto:sharma.aman.14@proton.me"><i class="fa-solid fa-envelope"></i></a>
             <a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
        </div>
@@ -102,8 +102,8 @@
                     <div class="circle"></div>
                 </div>
                 <div class="right">
-                    <p class="school">St. Xavier's College, Mumbai</p>
-                    <p class="description">BSc IT <br> 9.64 cgpa</p>
+                    <p class="school">College, Mumbai</p>
+                    <p class="description">course name<br> 9.64 cgpa</p>
                 </div>
             </div>
     
@@ -116,7 +116,7 @@
                     <div class="circle"></div>
                 </div>
                 <div class="right">
-                    <p class="school">Shri T.P. Bhatia College</p>
+                    <p class="school">college</p>
                     <p class="description">Science <br> 88.87%</p>
                 </div>
             </div>
@@ -130,7 +130,7 @@
                     <div class="circle"></div>
                 </div>
                 <div class="right">
-                    <p class="school">Swami Vivekanand International School</p>
+                    <p class="school">School</p>
                     <p class="description">92.40%</p>
                 </div>
             </div>
@@ -157,7 +157,7 @@
             <div class="proj-carousel" id="projCarousel">
                 
                 <div class="projcontent">
-                    <a href="www.google.com"><img class="proj_img" src="movie.png"></a>
+                    <a href="https://aman-sharma14.github.io/movie_catalog/"><img class="proj_img" src="movie.png"></a>
                     <div class="description">
                         <h2>Movie Catalog</h2>
                         <span class="tech">
@@ -172,7 +172,7 @@
     
                
                 <div class="projcontent">
-                    <a href="www.example.com"><img class="proj_img" src="wordle.png"></a>
+                    <a href="https://aman-sharma14.github.io/wordle/"><img class="proj_img" src="wordle.png"></a>
                     <div class="description">
                         <h2>Wordle</h2>
                         <span class="tech">
@@ -184,8 +184,37 @@
                     </div>
                 </div>
 
+                
+
                 <div class="projcontent">
-                    <a href="www.example.com"><img class="proj_img" src="p2.png"></a>
+                    <a href="https://aman-sharma14.github.io/todo/"><img class="proj_img" src="todo.png"></a>
+                    <div class="description">
+                        <h2>To-do List</h2>
+                        <span class="tech">
+                            <i class="devicon-html5-plain-wordmark colored"></i>
+                            <i class="devicon-css3-plain-wordmark colored"></i>
+                            <i class="devicon-jquery-plain-wordmark colored"></i>
+                            
+                        </span>
+                        <p>This <b>To-do List</b> project allows users to add, complete, and delete tasks with ease. Tasks are dynamically added with "Done" and "Delete" buttons. Completed tasks are crossed out, and tasks can be removed with a click. The interface is simple, responsive, and user-friendly, utilizing jQuery for real-time updates.</p>
+                    </div>
+                </div>
+
+                <div class="projcontent">
+                    <a href="https://aman-sharma14.github.io/rock_paper_scissors/"><img class="proj_img" src="rps.png"></a>
+                    <div class="description">
+                        <h2>Rock Paper Scissors</h2>
+                        <span class="tech">
+                            <i class="devicon-html5-plain-wordmark colored"></i>
+                            <i class="devicon-css3-plain-wordmark colored"></i>
+                            <i class="devicon-javascript-plain colored"></i>
+                            
+                        </span>
+                        <p>This <b>Rock Paper Scissors</b> game features a dynamic interface where the player's choice is shown instantly, while the computer's choice appears with a <u>spinning effect</u> for added suspense. Scores are updated automatically, and the result is displayed after each round, making for an engaging experience.</p>                    </div>
+                </div>
+
+                <div class="projcontent">
+                    <a href="https://aman-sharma14.github.io/news/"><img class="proj_img" src="p2.png"></a>
                     <div class="description">
                         <h2>News Website</h2>
                         <span class="tech">
@@ -330,7 +359,7 @@
         <h1 class="heading">CONTACT ME</h1>
         <hr class="hhr" style="width: 22%;">
         <div id="ccontent">
-            <form action="submit.php" id="form">
+            <form action="submit.php" id="form" method="post" onsubmit="return validatefields();">
 
                 
                 <div class="field">
@@ -366,10 +395,12 @@
                 <p> <b>Email</b> <br> <a href="mailto:sharma.aman.14@proton.me">sharma.aman.14@proton.me</a></p>
 
 
-                <hr>
+                <div>
+                    <hr id="chr">
+                </div>
                 <div id="media">
                     <a href="https://linkedin.com"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="https://github.com/aman-sharma14"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://github.com"><i class="fa-brands fa-github"></i></a>
                     <a href="emailto:sharma.aman.14@proton.me"><i class="fa-solid fa-envelope"></i></a>
                     <a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
                     
@@ -384,7 +415,3 @@
 </html>
 
 
-<!-- light bg : #F5E3D9
-light text : #054159,   #02364B more darker
-
-dark bg: #252C40 -->
