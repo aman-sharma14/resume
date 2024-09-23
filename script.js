@@ -101,8 +101,9 @@ document.getElementById('projCarouselContainer').addEventListener('mouseleave', 
 function validateusr(){
     var fname =  document.getElementById('fname');
     var er = fname.nextElementSibling;
+    var pattern = /^[A-Za-z]+$/;
 
-    if(fname.value.trim() === "" || fname.value.trim().length < 2){
+    if(fname.value.trim() === "" || fname.value.trim().length < 2 || !pattern.test(fname)){
         er.innerHTML = `<i class='fa-solid fa-circle-exclamation failure-icon' style="color: red;"></i>`
     }
     else{
@@ -129,8 +130,9 @@ function validatefields(){
     var fname =  document.getElementById('fname');
     var email_pattern = /^(?![0-9]+@[a-zA-Z0-9.-]+$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/ ;
     var email = document.getElementById('email');
-    
-    if (fname.value.trim() === "" || fname.value.trim().length < 2){
+    var pattern = /^[A-Za-z]+$/;
+
+    if(fname.value.trim() === "" || fname.value.trim().length < 2 || !pattern.test(fname)){
         isValid=false;
         alert("Enter a valid name");
     }
