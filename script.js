@@ -72,7 +72,7 @@ else{
         document.getElementById('nav').style.borderBottomColor = ''
         document.getElementById('navBar').style.borderColor = ''
 
-        t=0;
+        t=1;
 }
 })
 
