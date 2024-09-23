@@ -19,15 +19,17 @@
         }
         div{
             
+            display: flex;
             align-items: center;
-
+            height: 300px;
             background-color: #fff;
             border-radius: 10px;
             padding: 30px;
             box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
             max-width: 400px;
             text-align: center;
-            font-size: 18px;
+            font-size: 25px;
+            justify-content: center;
 
            
         }
@@ -44,7 +46,7 @@
 $serverfname = "localhost";
 $userfname = "root";
 $password = "rootdb";
-$dbfname = "resumeDB";
+$dbfname = "resumedb";
 
 //Create Connection
 $conn = new mysqli($serverfname,$userfname,$password,$dbfname);
@@ -56,7 +58,7 @@ if($conn -> connect_error){
 
 //Get form data
 $fname = $_POST['fname'];
-$lname = $_POST['mail'];
+$lname = $_POST['lname'];
 $email = $_POST['email'];
 $msg = $_POST['msg'];
 
@@ -67,7 +69,7 @@ $stmt = $conn->prepare("INSERT INTO resumeMsgs (fname,lname,email,msg) VALUES (?
 $stmt->bind_param("ssss",$fname,$lname,$email,$msg);
 
 if($stmt->execute()){
-    echo "Thank you ".$fname." for your Feedback. Have a nice day!";
+    echo "Thank you ".$fname." for your feedback.<br>Your response has been recorded. <br>Have a nice day! ";
 }
 else{
     echo "Error: ".$stmt->error;
