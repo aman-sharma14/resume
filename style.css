@@ -269,7 +269,7 @@ a:hover{
 
 @keyframes slideInUp {
     0% {
-        transform: translateY(100%);
+        transform: translateY(300%);
         opacity: 0;
     }
     100% {
@@ -350,12 +350,12 @@ a:hover{
     position: relative;
 }
 @keyframes slideInLeft {
-    0% { transform: translateX(-100%); opacity: 0; }
+    0% { transform: translateX(-50%); opacity: 0; }
     100% { transform: translateX(0); opacity: 1; }
 }
 
 @keyframes slideInRight {
-    0% { transform: translateX(100%); opacity: 0; }
+    0% { transform: translateX(50%); opacity: 0; }
     100% { transform: translateX(0); opacity: 1; }
 }
 
@@ -409,6 +409,17 @@ a:hover{
     }
 }
 
+@keyframes slideDownexp {
+    0% {
+        transform: translateY(-150px); 
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0); 
+        opacity: 1;
+    }
+}
+
 @keyframes slideDownLine {
     0% {
         top: -75%; 
@@ -458,9 +469,11 @@ a:hover{
     display: flex;
     background-color: #f2f2f2;
     flex-direction: column;
+    
 
     h1{
         margin-top: 10%;
+        position: relative;
     }
 
     #expcontent{
@@ -469,6 +482,7 @@ a:hover{
         text-align: center;
         margin: 5% 20%;
         font-size: 25px;
+        position: relative;
 
     }
 }
@@ -583,7 +597,7 @@ a:hover{
     font-size: 35px;
 }
 .projcontent p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.6;
     color: #1B2A59;
     text-align: justify;
@@ -615,6 +629,7 @@ a:hover{
     width: 150px;
     margin: 1%;
     padding: 2% 3%;
+    position: relative;
 
     border-radius: 10px;
     transition: transform 0.3s ease-in-out;
@@ -624,6 +639,7 @@ a:hover{
     h1{
         font-weight:600;
         font-family: "Source Code Pro", monospace;
+        position: relative;
     }
     span{
         display: flex;
