@@ -40,6 +40,42 @@ b2.addEventListener('click',()=>{
     }
 })
 
+const b1 = document.getElementById('b1');
+let t=1;
+
+b1.addEventListener('click',()=>{
+    if(t){
+        document.documentElement.style.setProperty('--pbcolor', '#121212');
+        document.documentElement.style.setProperty('--sbcolor', '#1F1F1F');
+        document.documentElement.style.setProperty('--t1color', '#DFE5FF');
+        document.documentElement.style.setProperty('--tcolor', '#A0BED9');
+        document.documentElement.style.setProperty('--colorp', '#1F1F1F');
+        document.documentElement.style.setProperty('--bcolor', 'rgba(255, 255, 255, 0.5);');
+        document.documentElement.style.setProperty('--lcolor', '#A0BED95e');
+
+        document.getElementById('nav').style.borderBottomColor = '#A0BED9'
+        document.getElementById('navBar').style.borderColor = '#A0BED9'
+
+        t=0;
+        
+}
+
+else{
+        document.documentElement.style.setProperty('--pbcolor', '');
+        document.documentElement.style.setProperty('--sbcolor', '');
+        document.documentElement.style.setProperty('--t1color', '');
+        document.documentElement.style.setProperty('--tcolor', '');
+        document.documentElement.style.setProperty('--colorp', '');
+        document.documentElement.style.setProperty('--bcolor', '');
+        document.documentElement.style.setProperty('--lcolor', '');
+
+        document.getElementById('nav').style.borderBottomColor = ''
+        document.getElementById('navBar').style.borderColor = ''
+
+        t=0;
+}
+})
+
 
 
 
