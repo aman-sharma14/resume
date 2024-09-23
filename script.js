@@ -113,7 +113,8 @@ function validateusr(){
 function validatemail(){
     var email =  document.getElementById('email');
     var er = email.nextElementSibling;
-    var email_pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ ;
+    var email_pattern = /^(?![0-9]+@[a-zA-Z0-9.-]+$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    ;
 
     if(email.value.trim() === "" || !email_pattern.test(email.value.trim())){
         er.innerHTML = `<i class='fa-solid fa-circle-exclamation failure-icon' style="color: red;"></i>`
@@ -123,6 +124,24 @@ function validatemail(){
     }
 }
 
+function validatefields(){
+    var isValid = true;
+    var fname =  document.getElementById('fname');
+    var email_pattern = /^(?![0-9]+@[a-zA-Z0-9.-]+$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/ ;
+    var email = document.getElementById('email');
+    
+    if (fname.value.trim() === "" || fname.value.trim().length < 2){
+        isValid=false;
+        alert("Enter a valid name");
+    }
+    
+    if (email.value.trim() === "" || !email_pattern.test(email.value.trim())){
+        isValid=false;
+        alert("Enter a valid email");
+    }
+
+    return isValid;
+}
 
 
 
@@ -148,6 +167,10 @@ function isInViewport(item) {
 
     const about = document.getElementById('about');
     const edu = document.getElementById('edu');
+    const exp = document.getElementById('exp');
+    const skillh = document.querySelector('#skills h1');
+    const skillhr = document.querySelector('#skills hr');
+    // const edu = document.getElementById('edu');
 
     const profile = document.getElementById('profile');
     const aboutme = document.getElementById('aboutme');
@@ -156,6 +179,21 @@ function isInViewport(item) {
     const left = document.getElementsByClassName('left');
     const right = document.getElementsByClassName('right');
     const circle = document.getElementsByClassName('circle');
+
+    const expChildren = exp.children;
+
+    const skills = document.getElementById('skills')
+    const skill = document.getElementsByClassName('skill');
+
+
+    const interests = document.getElementById('hobbies')
+    const interestsh = document.querySelector('#hobbies h1');
+    const interestshr = document.querySelector('#hobbies hr');
+    const interestsp = document.querySelectorAll('#hobbies div p');
+
+    const contact = document.getElementById('contact');
+    const ccontent2 = document.getElementById('ccontent2').children;
+    const chr = document.getElementById('chr')
     
 
     window.addEventListener("scroll", function(){
@@ -184,9 +222,47 @@ function isInViewport(item) {
             for (let i = 0; i < circle.length; i++) {
                 circle[i].style.animation = "slideDown 3s forwards";
             }
+
+            document.getElementById('educ').style.setProperty('--beforeAnimation', 'slideDownLine 3s forwards');
         }
 
-        document.getElementById('educ').style.setProperty('--beforeAnimation', 'slideDownLine 3s forwards');
+        if (isInViewport(exp)) {
+            for(let i=0; i<expChildren.length;i++){
+                expChildren[i].style.animation = "slideDownexp 3s ease forwards";
+            }
+        }
+
+        if (isInViewport(skills)) {
+            
+            skillh.style.animation = "slideDownexp 2s ease forwards";
+            skillhr.style.animation = "slideDownexp 2s ease forwards";
+            
+
+            for(let i=0; i<skill.length;i++){
+                skill[i].style.animation = "slideDownexp 2s ease forwards";
+            }
+
+            
+        }
+
+        if (isInViewport(interests)) {
+            interestsh.style.animation = "slideDownexp 2s ease forwards";
+            interestshr.style.animation = "slideDownexp 2s ease forwards";
+
+            for(let i=0; i<interestsp.length;i++){
+                interestsp[i].style.animation = "slideInUp 3s ease forwards";
+            }
+        }
+
+        if (isInViewport(contact)) {
+            
+
+            for(let i=0; i<ccontent2.length;i++){
+                ccontent2[i].style.animation = "slideInUp 2s ease forwards";
+            }
+           
+        }
+        
 
     
 
