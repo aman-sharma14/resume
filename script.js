@@ -139,7 +139,7 @@ function validateusr(){
     var er = fname.nextElementSibling;
     var pattern = /^[A-Za-z]+$/;
 
-    if(fname.value.trim() === "" || fname.value.trim().length < 2 || !pattern.test(fname)){
+    if(fname.value.trim() === "" || fname.value.trim().length < 2 || !pattern.test(fname.value)){
         er.innerHTML = `<i class='fa-solid fa-circle-exclamation failure-icon' style="color: red;"></i>`
     }
     else{
@@ -168,7 +168,7 @@ function validatefields(){
     var email = document.getElementById('email');
     var pattern = /^[A-Za-z]+$/;
 
-    if(fname.value.trim() === "" || fname.value.trim().length < 2 || !pattern.test(fname)){
+    if(fname.value.trim() === "" || fname.value.trim().length < 2 || !pattern.test(fname.value)){
         isValid=false;
         alert("Enter a valid name");
     }
