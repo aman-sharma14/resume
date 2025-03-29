@@ -2,7 +2,8 @@ import express from 'express';
 import mysql from 'mysql2';
 import path from 'path';
 import nodemailer from 'nodemailer';
-require('dotenv').config();
+// require('dotenv').config();
+import 'dotenv/config';
 
 import { SentimentIntensityAnalyzer } from 'vader-sentiment';
 
