@@ -40,42 +40,6 @@ b2.addEventListener('click',()=>{
     }
 })
 
-const b1 = document.getElementById('b1');
-let t=1;
-
-b1.addEventListener('click',()=>{
-    if(t){
-        document.documentElement.style.setProperty('--pbcolor', '#121212');
-        document.documentElement.style.setProperty('--sbcolor', '#1F1F1F');
-        document.documentElement.style.setProperty('--t1color', '#DFE5FF');
-        document.documentElement.style.setProperty('--tcolor', '#A0BED9');
-        document.documentElement.style.setProperty('--colorp', '#1F1F1F');
-        document.documentElement.style.setProperty('--bcolor', 'rgba(255, 255, 255, 0.5);');
-        document.documentElement.style.setProperty('--lcolor', '#A0BED95e');
-
-        document.getElementById('nav').style.borderBottomColor = '#A0BED9'
-        document.getElementById('navBar').style.borderColor = '#A0BED9'
-
-        t=0;
-        
-}
-
-else{
-        document.documentElement.style.setProperty('--pbcolor', '');
-        document.documentElement.style.setProperty('--sbcolor', '');
-        document.documentElement.style.setProperty('--t1color', '');
-        document.documentElement.style.setProperty('--tcolor', '');
-        document.documentElement.style.setProperty('--colorp', '');
-        document.documentElement.style.setProperty('--bcolor', '');
-        document.documentElement.style.setProperty('--lcolor', '');
-
-        document.getElementById('nav').style.borderBottomColor = ''
-        document.getElementById('navBar').style.borderColor = ''
-
-        t=1;
-}
-})
-
 
 
 
@@ -309,6 +273,152 @@ function isInViewport(item) {
     });
 
 
+//--------------------------------------------------CLient Side JS--------------------------------------------------------
+
+let reviews;
+let otp;
+
+
+document.addEventListener('DOMContentLoaded', async () => {
+    await fetchReviews();
+})
+
+document.getElementById('sendOtp').addEventListener('click', async (e)=>{
+    e.preventDefault()
+    var email =  document.getElementById('email');
+    var email_pattern = /^(?![0-9]+@[a-zA-Z0-9.-]+$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/ ;
+    if(email.value.trim() === "" || !email_pattern.test(email.value.trim())){
+        alert('Enter Valid email');
+    }
+    else{
+
+        const data = { email: email.value.trim() };
+
+        await fetch('http://localhost:3000/otp',{
+            method : 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => {
+            
+            if (!response.ok) {
+                
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json(); 
+        })
+        .then(data => {
+            otp = data.otp;
+            console.log('Success:', data.message);
+            
+            
+        })
+        .catch(error => {
+            
+            console.error('Error:', error);
+            alert('There was an error sending the email. Please try again.'); 
+        });
+
+        document.getElementById('otpfield').style.display = 'block';
+    }
+})
+
+document.getElementById('submitOtp').addEventListener('click',function(e){
+    e.preventDefault();
+    const iotp = document.getElementById('otp').value;
+
+    if (parseInt(iotp) === otp) {
+        alert('Verified.')
+        document.getElementById('sendOtp').style.display = 'none';
+        document.getElementById('otpfield').style.display = 'none';
+        document.getElementById('submitOtp').style.display = 'none';
+        document.getElementById('submit').style.display = 'flex';
+    }
+    else {
+        alert('Incorrect OTP. Please try again.'); 
+    }
+})
+
+
+
+
+
+
+document.getElementById("form").addEventListener('submit', async (e)=>{
+    e.preventDefault();
+
+    const fname =  document.getElementById('fname').value;
+    const lname =  document.getElementById('lname').value;
+    const email =  document.getElementById('email').value;
+    const msg =  document.getElementById('msg').value;
+
+    const data = {
+        fname : fname,
+        lname: lname,
+        email: email,
+        msg: msg
+    };
+
+    await fetch('http://localhost:3000/reviews', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+
+    document.getElementById('form').innerHTML = `<p id="smsg">Thank you ${fname}. <br>Your response has been recorded.<br>Have a Nice Day.</p>`;
+    fetchReviews();
+})
+
+
+async function fetchReviews() {
+    const response = await fetch('http://localhost:3000/reviews');
+    reviews = await response.json();
+
+    
+    code(reviews);
+
+
+    const pos_rev = reviews.filter(review => review.type === 'Positive');
+    const neg_rev = reviews.filter(review => review.type === 'Negative');
+    const bal_rev = reviews.filter(review => review.type === 'Balanced');
+
+    const dropdown = document.getElementById('category');
+    dropdown.addEventListener('change',()=>{
+        let value = dropdown.value;
+
+        let arr = value === 'favourable' ? pos_rev : (value === 'critical' ? neg_rev : (value === 'balanced' ? bal_rev : reviews))
+
+        code(arr);
+    })
+
+
+}
+
+
+function code(revs){
+    let html ="";
+
+    revs.forEach(review => {
+
+        
+        let date = new Date(review.time);
+        date = date.toLocaleString();
+        html += `<div class="review">
+                <p class="rheader"><i class="fa-solid fa-user"></i>${review.fname+" "+review.lname} <span>${date}</span></p>
+                <p class="rev">${review.msg}
+                    
+                    <hr>
+                </p>
+                
+            </div>`
+    })
+
+    document.getElementById('reviews').innerHTML = html;
+}
 
 
 

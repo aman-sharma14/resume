@@ -40,6 +40,7 @@
             <a href="#skills">SKILLS</a> <hr>
             <a href="#hobbies">INTERESTS</a> <hr>
             <a href="#contact">CONTACT ME</a> 
+            <a href="#review_section">REVIEWS</a>
         </div>
 
 
@@ -359,24 +360,36 @@
         <h1 class="heading">CONTACT ME</h1>
         <hr class="hhr" style="width: 22%;">
         <div id="ccontent">
-            <form action="submit.php" id="form" method="post" onsubmit="return validatefields();">
+            <form id="form" method="post" onsubmit="return validatefields();">
 
                 
                 <div class="field">
                     <label for="fname">First Name</label> <br>
-                    <input type="text" id="fname" name="fname" required onkeyup="validateusr();">
+                    <input type="text" id="fname" name="fname"  required onkeyup="validateusr();">
                     <small></small>
                 </div>
 
                 <div class="field">
                     <label for="lname">Last Name</label> <br>
-                    <input type="text" id="lname" name="lname" pattern="[A-Za-z]+">
+                    <input type="text" id="lname" name="lname" pattern="[A-Za-z]+" >
                 </div>
 
                 <div class="field">
                     <label for="email">Email</label> <br>
                     <input type="text" id="email" name="email" required onkeyup="validatemail();"> 
                     <small></small>
+
+                    <button id="sendOtp">Send OTP</button>
+
+
+                    <div id="otpfield">
+                        <label for="otp">Enter OTP: </label>
+                        <input type="number" minlength="6" maxlength="6" name="otp" id="otp">
+                        <small>120</small>
+
+                        <button id="submitOtp">Submit OTP</button>
+                    </div> 
+
                 </div>
 
                 <div class="field">
@@ -384,7 +397,7 @@
                     <textarea name="msg" id="msg"></textarea>
                 </div>
 
-                <div class="field">
+                <div class="field" id="submit">
                     <input id="sub"type="submit" value="Submit">
                 </div>
             </form>
@@ -409,9 +422,48 @@
         </div>
     </div>
 
+    <div id="review_section" class="section">
+        <h1 class="heading">REVIEWS</h1>
+        <hr class="hhr" style="width: 22%;">
+
+
+
+        <div id="categories">
+            <select name="category" id="category" >
+                <option value="" disabled selected>Sort by</option>
+                <option value="all">All</option>
+                <option value="favourable">Favourable</option>
+                <option value="critical">Critical</option>
+                <option value="balanced">Balanced</option>
+            </select>
+
+        </div>
+
+        <div id="reviews">
+            <div class="review">
+                <p class="rheader"><i class="fa-solid fa-user"></i>John  Doe <span>2024-09-25 00:49:24</span></p>
+                <p class="rev">hello I am john
+                    
+                    <hr>
+                </p>
+                
+            </div>
+
+            
+
+            
+        </div>
+
+    </div>
+
+
 
    <script src="script.js"></script>
 </body>
 </html>
 
 
+<!-- light bg : #F5E3D9
+light text : #054159,   #02364B more darker
+
+dark bg: #252C40 -->
